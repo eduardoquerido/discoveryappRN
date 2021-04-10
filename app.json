@@ -1,0 +1,12 @@
+{
+  "name": "discoveryapp",
+  "displayName": "discoveryapp",
+  "expo": {
+    "name": "discoveryapp",
+    "slug": "discoveryapp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

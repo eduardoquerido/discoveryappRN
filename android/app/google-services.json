@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "501720967314",
+    "project_id": "discoveryapp-reactn",
+    "storage_bucket": "discoveryapp-reactn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501720967314:android:02b14f535ad5a37d1f9e4b",
+        "android_client_info": {
+          "package_name": "com.discoveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501720967314-vmen4k31bebd9ee71nqpvtcg5ujvfi6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.discoveryapp",
+            "certificate_hash": "276e201bb5b85feb03a99f0c43239e9c2206421a"
+          }
+        },
+        {
+          "client_id": "501720967314-o1il5ufb1opsmk35ogq72vpdloepfhl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFGMZjH9TKFff76KmqCNux3OUmqtCaKE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501720967314-o1il5ufb1opsmk35ogq72vpdloepfhl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
