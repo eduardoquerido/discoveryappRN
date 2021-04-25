@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,27 +6,96 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
-function HomeScreen({ navigation: { navigate } }) {
-  const navigation = useNavigation();
+export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: null,
+      dataSource: [],
+    };
+  }
 
-  return (
-
-      <View style={styles.titleView}>
-        <Text style={styles.titulo}>
-          Listagem de Países
-        </Text>
-      </View>
-  );
+  componentDidMount() {
+    return fetch('https://restcountries.eu/rest/v2/all')
+     .then ( (response) => response.json() )
+     .then ( (responseJson) =>{
+       this.setState({
+         isLoading: false,
+         dataSource: responseJson,
+       })
+     })
+    .catch((error) => {
+      console.log(error)
+     });
+  }
+  
+  render() {
+    if (this.state.isLoading){
+      return(
+        <View style={style.container}>
+          <ActivityIndicator />
+        </View>
+      )
+    } else{
+      let countries = this.state.dataSource
+      return(
+        <View style={styles.container}>
+          <Text style={styles.titulo}>
+            Listagem de Países
+          </Text>
+          <View>{countries.map(
+            function(country){
+              return (
+                <View style={styles.subtitulo}>
+                  <Text>{country.name}</Text>
+                  <Text>{country.alpha2Code}</Text>
+                </View>
+              )
+            }
+          )}</View>
+        </View>
+      );
+    }
+  }
 }
+
+
+// function HomeScreen({ navigation: { navigate } }) {
+//   const navigation = useNavigation();
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       isLoading: true,
+//       dataSource: null,
+//     }
+//   }
+
+//   return (
+
+//       <View style={styles.titleView}>
+//         <Text style={styles.titulo}>
+//           Listagem de Países
+//         </Text>
+//       </View>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3d3dff',
+  },
+
+  item: {
+    flex: 1,
+    alignSelf: 'stretch',
+    margin: 10,
   },
 
   row:{
@@ -57,23 +126,6 @@ const styles = StyleSheet.create({
     marginLeft:30,
   },
 
-  carrosel:{
-    alignItems:'center', 
-    justifyContent:'center',
-  },
-
-  carroselView:{
-    height:150,  
-  },
-
-  carroselView1:{
-    height:100,  
-  },
-
-  carroselView2:{
-    height:180,  
-  },
-
   subtitulo: {
     color: '#DAD8D8',
     fontSize: 25,
@@ -100,4 +152,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default HomeScreen;
+// export default HomeScreen;
