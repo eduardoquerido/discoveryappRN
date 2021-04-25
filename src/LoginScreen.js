@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -20,13 +21,28 @@ function LoginScreen({ navigation: { navigate } }) {
     const [loggedIn, setloggedIn] = useState(false);
     const [userInfo, setuserInfo] = useState([]);
 
-    const signIn = async()=>{
-        try{
-            const response = await firebase.auth().signInWithEmailAndPassword(email, password); 
-            navigate("Home")           
-        }catch(err){
-            setError(err.message);
+    useEffect(() => {
+      AsyncStorage.getItem('user').then((user) => {
+        if (user !== null){
+        // var parsedUser = JSON.parse(user)
+        navigate("MainTab")
         }
+      });
+    },[]
+    );
+
+    const signIn = () => {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        var resData = firebase.auth().currentUser.toJSON()
+        AsyncStorage.setItem('user', JSON.stringify(resData)).then(() => {
+          navigate('MainTab')
+        });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
     }
 
   return (
