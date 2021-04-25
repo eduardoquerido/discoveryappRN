@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  ScrollView
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -48,43 +49,21 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.titulo}>
             Listagem de Países
           </Text>
-          <View>{countries.map(
+          <ScrollView>{countries.map(
             function(country){
               return (
-                <View style={styles.subtitulo}>
-                  <Text>{country.name}</Text>
-                  <Text>{country.alpha2Code}</Text>
+                <View>
+                  <Text style={styles.subtitulo}>{country.name}</Text>
+                  <Text style={styles.subtitulo}>{country.alpha2Code}</Text>
                 </View>
               )
             }
-          )}</View>
+          )}</ScrollView>
         </View>
       );
     }
   }
 }
-
-
-// function HomeScreen({ navigation: { navigate } }) {
-//   const navigation = useNavigation();
-
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       isLoading: true,
-//       dataSource: null,
-//     }
-//   }
-
-//   return (
-
-//       <View style={styles.titleView}>
-//         <Text style={styles.titulo}>
-//           Listagem de Países
-//         </Text>
-//       </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -152,4 +131,3 @@ const styles = StyleSheet.create({
   
 });
 
-// export default HomeScreen;
