@@ -23,7 +23,7 @@ function MainTabNavigator(){
     </Tab.Navigator>
   )
 }
- 
+
 function App() {
   return (
     <NavigationContainer>
