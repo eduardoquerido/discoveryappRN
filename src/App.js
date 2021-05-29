@@ -6,6 +6,9 @@ import HomeScreen from './HomeScreen';
 import LoginScreen from './LoginScreen';
 import CreateUserScreen from './CreateUserScreen';
 import CustomTabBar from './components/CustomTabBar'
+import ItemsList from './ItemsList';
+import CreateItem from './CreateItem';
+import ItemDetail from './ItemDetail';
 
 // ------------------------APP----------------------------------
 
@@ -28,6 +31,9 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="MainTab" component={MainTabNavigator}/>
         <Stack.Screen name="CreateUser" component={CreateUserScreen}/>
+        <Stack.Screen name="ItemsList" component={ItemsList} options={{title: 'Anotações'}}/>
+        <Stack.Screen name="CreateItem" component={CreateItem} options={{title: 'Nova Anotação'}}/>
+        <Stack.Screen name="ItemDetail" component={ItemDetail} options={{title: 'Detalhes'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
