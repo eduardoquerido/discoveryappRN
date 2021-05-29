@@ -16,7 +16,7 @@ const CreateItem = (props) => {
             alert('Adicione um título para identificação')
         } else {
             try {
-                await firebase.db.collection('anotations').add({
+                await firebase.firestore().collection('anotations').add({
                     title: state.title,
                     name: state.name,
                     description: state.description,

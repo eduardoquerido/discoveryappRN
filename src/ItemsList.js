@@ -9,7 +9,7 @@ const ItemsList = (props) => {
     const [state, setState] = useState([]);
 
     useEffect(() => {
-        firebase.db.collection('anotations').onSnapshot(querySnapshot => {
+        firebase.firestore().collection('anotations').onSnapshot(querySnapshot => {
             // Lista de Items:
             const items = [];
 

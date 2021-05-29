@@ -16,9 +16,11 @@ const CustomTabBar = () => {
               });
         });
     }
+
     return (
         <View style={styles.tabWrapper}>
             <Text style={styles.tabItem}>Home</Text>
+            <Text onPress={()=> navigation.push('ItemsList')} style={styles.tabItem}>Anotações</Text>
             <Text onPress={signOut} style={styles.tabItem}>Sair</Text>
         </View>
     )

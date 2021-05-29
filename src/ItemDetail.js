@@ -19,14 +19,17 @@ const ItemDetail = (props) => {
     },[]);
 
     const getItemById = async (id) => {
-        const dbRef = firebase.db.collection('anotations').doc(id);
+        const dbRef = firebase.firestore().collection('anotations').doc(id);
         const doc = await dbRef.get();
         const item = doc.data();
         console.log(item)
         setState({
             ...state,
             id: doc.id,
-        })
+            title: item.title,
+            name: item.name,
+            description: item.description            
+        })       
         setLoading(false)
     }
 
@@ -36,7 +39,7 @@ const ItemDetail = (props) => {
     }
 
     const deleteItem = async () => {
-        const dbRef = firebase.db.collection('anotations').doc(props.route.params.itemId);
+        const dbRef = firebase.firestore().collection('anotations').doc(props.route.params.itemId);
         await dbRef.delete()
         props.navigation.navigate('ItemsList')
     }
@@ -81,7 +84,7 @@ const ItemDetail = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 35
+        padding: 35,        
     },
 
     inputGroup: {
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
         padding:0,
         marginBottom: 15,
         borderBottomWidth: 1,
-        borderBottomColor: '#cccccc'
+        borderBottomColor: '#cccccc',
     }
 })
 
